@@ -1,0 +1,36 @@
+<div class="login" *ngIf="!loading">
+  <form (ngSubmit)="!loginForm.invalid && onSubmit()" [formGroup]="loginForm" novalidate id="lForm">
+    <div class="input-holder">
+      <label for="username" [class.label-error]="loginForm.get('username').invalid && loginForm.get('username').touched">
+        {{'auth.email' | translate}}</label>
+      <mat-form-field appearance="outline" class="form-field full-width"
+                      [class.field-error]="loginForm.get('username').invalid && loginForm.get('username').touched">
+        <input matInput type="text" class="form-control"
+               [placeholder]="'auth.loginPlaceholder' | translate"
+               formControlName="username" id="username"/>
+        <mat-error *ngIf="loginForm.get('username').hasError('required')" class="input-error">
+          {{'formError.email.required' | translate}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="input-holder">
+      <label for="username" [class.label-error]="loginForm.get('password').invalid && loginForm.get('password').touched">
+        {{'auth.password' | translate}}</label>
+      <mat-form-field class="form-field" appearance="outline" class="full-width">
+        <img [src]="showPassword ? 'assets/signs/active-eye.svg' : 'assets/signs/eye.svg'"
+             class="eye" (click)="showPassword = !showPassword">
+        <input matInput [type]="showPassword ? 'text' : 'password'"
+               [placeholder]="'auth.passwordPlaceholder' | translate"
+               class="form-control" formControlName="password" id="password"/>
+
+        <mat-error *ngIf="loginForm.get('password').hasError('required')" class="input-error">
+          {{'formError.password.required' | translate}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" class="main-button">
+      {{'auth.logInto' | translate}}
+    </button>
+  </form>
+</div>
+<app-loader *ngIf="loading"></app-loader>

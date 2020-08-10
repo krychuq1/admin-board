@@ -1,0 +1,31 @@
+{
+  "auth": {
+    "passwordChangeTitle": "Hasło zostało zmienione",
+    "PasswordChangeSubTitle": "Zaloguj się używając nowego hasła.",
+    "loginTitle": "Masz już u nas konto? Zaloguj się",
+    "registerTitle": "Zarejestruj się za pomocą adresu email.",
+    "or": "lub",
+    "required": "* Pola wymagane",
+    "loginPlaceholder": "Wpisz email",
+    "passwordPlaceholder": "Wpisz hasło",
+    "passwordPlaceholderR": "Powtórz hasło",
+    "namePlaceholder": "Wpisz imię",
+    "surnamePlaceholder": "Wpisz nazwisko",
+    "email": "Adres email",
+    "name": "Imię",
+    "surname": "Nazwisko",
+    "password": "Hasło",
+    "rPassword": "Powtórz hasło",
+    "terms": "Zakładając konto, akceptujesz",
+    "terms2": "nasze zasady i warunki oraz politykę prywatności.",
+    "join": "Dołącz do wirio",
+    "logInto": "Zaloguj",
+    "register": "Rejestracja",
+    "login": "Logowanie",
+    "forgot": "Nie pamiętasz hasła?",
+    "fbError": "Logowanie przez Facebook nie powiodło się. Spróbuj jeszcze raz, lub skontaktuj sie z nami.",
+    "googleError": "Logowanie przez Google nie powiodło się. Spróbuj jeszcze raz, lub skontaktuj sie z nami.",
+    "loginError": "Email lub hasło jest niepoprawne"
+  }
+
+}

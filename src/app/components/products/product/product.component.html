@@ -1,0 +1,26 @@
+<div class="product" *ngIf="product.sold">
+  <div class="image-holder" [class.next]="index > 0">
+    <div class="options">
+      <img src="assets/signs/edit.svg">
+      <img src="assets/signs/delete.svg">
+    </div>
+    <img [src]="product.assets[0]">
+    <div class="sold" >
+      <p>{{'product.sold' | translate}}</p>
+    </div>
+  </div>
+  <h3>{{product.price}} zł</h3>
+  <p>{{product.title}}</p>
+</div>
+<div class="product" [routerLink]="'/product/' + product.id" *ngIf="!product.sold">
+
+  <div class="image-holder" [class.next]="index > 0">
+    <div class="options">
+      <img src="assets/signs/edit.svg">
+      <img src="assets/signs/delete.svg">
+    </div>
+    <img [src]="product.assets[0]">
+  </div>
+  <h3>{{product.price}} zł</h3>
+  <p>{{product.title}}</p>
+</div>

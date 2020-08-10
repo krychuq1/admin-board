@@ -1,0 +1,42 @@
+@import 'colors.scss';
+//@import breakpoints";
+body{
+  font-family: 'Poppins', sans-serif;
+  color: $font-color;
+}
+
+h1{
+  font-size: 37px;
+  font-weight: 900;
+}
+p{
+  font-weight: 400;
+}
+h3{
+  font-size: 18px;
+  &.underline{
+    display: initial;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 20px 0 0 -3px;
+    padding: 0 3px;
+    background: linear-gradient(to right, $secondary, $secondary) no-repeat;
+    background-size: 100% 9px;
+    background-position: 0 15px;
+    line-height: 1;
+  }
+}
+h2{
+  font-size: 30px;
+  font-weight: 700;
+}
+input{
+  font-family: 'Poppins', sans-serif;
+
+}
+
+//@include md{
+//  h2{
+//    margin: 0 0 20px 0;
+//  }
+//}

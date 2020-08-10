@@ -1,0 +1,88 @@
+{
+  "formError": {
+    "email": {
+      "required": "Email jest wymagany",
+      "pattern": "Proszę podać poprawny email"
+    },
+    "password": {
+      "required": "Hasło jest wymagane",
+      "pattern": "Hasło powinno mieć przynajmiej 8 znaków  zawiarać min 1 litere i cyfre",
+      "misMatch": "Hasła powinny być takie same"
+    },
+    "firstName": {
+      "required": "Imię jest wymagane",
+      "minLength": "Imię powinno mieć przynajmiej 3 znaki"
+    },
+    "lastName": {
+      "required": "Nazwisko jest wymagane",
+      "minLength": "Nazwisko powinno mieć przynajmiej 3 znaki"
+    }
+  },
+  "loader": {
+    "main": "To zajmie tylko chwilę..."
+  },
+  "sideNav": {
+    "orders": "zamówienia",
+    "products": "produkty"
+  },
+  "auth": {
+    "passwordChangeTitle": "Hasło zostało zmienione",
+    "PasswordChangeSubTitle": "Zaloguj się używając nowego hasła.",
+    "loginTitle": "Masz już u nas konto? Zaloguj się",
+    "registerTitle": "Zarejestruj się za pomocą adresu email.",
+    "or": "lub",
+    "required": "* Pola wymagane",
+    "loginPlaceholder": "Wpisz email",
+    "passwordPlaceholder": "Wpisz hasło",
+    "passwordPlaceholderR": "Powtórz hasło",
+    "namePlaceholder": "Wpisz imię",
+    "surnamePlaceholder": "Wpisz nazwisko",
+    "email": "Adres email",
+    "name": "Imię",
+    "surname": "Nazwisko",
+    "password": "Hasło",
+    "rPassword": "Powtórz hasło",
+    "terms": "Zakładając konto, akceptujesz",
+    "terms2": "nasze zasady i warunki oraz politykę prywatności.",
+    "join": "Dołącz do wirio",
+    "logInto": "Zaloguj",
+    "register": "Rejestracja",
+    "login": "Logowanie",
+    "forgot": "Nie pamiętasz hasła?",
+    "fbError": "Logowanie przez Facebook nie powiodło się. Spróbuj jeszcze raz, lub skontaktuj sie z nami.",
+    "googleError": "Logowanie przez Google nie powiodło się. Spróbuj jeszcze raz, lub skontaktuj sie z nami.",
+    "loginError": "Email lub hasło jest niepoprawne"
+  },
+  "product": {
+    "name": "nazwa",
+    "namePlaceholder": "Wpisz nazwe produktu",
+    "title": "tytuł",
+    "titlePlaceholder": "Wpisz tytuł produktu",
+    "price": "cena",
+    "pricePlaceholder": "Wpisz cene produktu",
+    "description": "opis",
+    "sizeAndFashion": "rozmiar i styl",
+    "color": "Kolor",
+    "size": "Rozmiar",
+    "category": "Kategoria",
+    "save": "Zapisz"
+  },
+  "products": {
+    "filters": "filtruj",
+    "sorting": "sortuj",
+    "searchTitle": "Twoje wyniki wyszukiwania terminu:",
+    "searchNoItems": "NIC NIE PASUJE DO TWOJEGO WYSZUKIWANIA :(",
+    "searchNoItemsHint": "Sprawdź pisownię lub zawęź kryteria wyszukiwania.",
+    "numberOfItems": "Liczba znalezionych produktów:",
+    "page": "Strona",
+    "of": "z"
+  },
+  "gallery": {
+    "title": "Galeria",
+    "addImg": "Dodaj zdjęcie"
+  },
+  "thumbnail": {
+    "title": "Thumbnail",
+    "addThumbnail": "Zmień thumbnail"
+  }
+}

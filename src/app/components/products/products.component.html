@@ -1,0 +1,19 @@
+<div class="products" *ngIf="productsPagination">
+  <h3>Zarzędznie produktami</h3>
+  <div class="product-holder" *ngIf="productsPagination">
+    <div *ngFor="let product of productsPagination.products; index as i" class="product" [routerLink]="'/product/' + product.id">
+      <div class="product-inner"
+           [class.even]="i % 2 === 0"
+           [class.odd]="i % 2 > 0"
+           [class.last]="(i + 1) % 4 === 0">
+        <app-product [product]="product"></app-product>
+      </div>
+    </div>
+  </div>
+
+  <div class="paging" *ngIf="productsPagination.products.length > 1">
+    <div class="arrow left" (click)="prevPage()"><</div>
+    <div class="inner">{{'products.page' | translate}} {{page}} {{'products.of' | translate}} {{numberOfPages}}</div>
+    <div class="arrow right" (click)="nextPage()">></div>
+  </div>
+</div>

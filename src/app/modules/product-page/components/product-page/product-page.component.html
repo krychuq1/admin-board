@@ -1,0 +1,128 @@
+<div class="product-page">
+  <form (ngSubmit)="!productForm.invalid && onSubmit()" [formGroup]="productForm" novalidate id="lForm">
+    <div class="input-holder">
+      <label for="name" [class.label-error]="productForm.get('name').invalid && productForm.get('name').touched">
+        {{'product.name' | translate}}</label>
+      <mat-form-field appearance="outline" class="form-field full-width"
+                      [class.field-error]="productForm.get('name').invalid && productForm.get('name').touched">
+        <input matInput type="text" class="form-control"
+               [placeholder]="'product.namePlaceholder' | translate"
+               formControlName="name" id="name"/>
+        <mat-error *ngIf="productForm.get('name').hasError('required')" class="input-error">
+          {{'formError.email.required' | translate}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="input-holder">
+      <label for="title" [class.label-error]="productForm.get('title').invalid && productForm.get('title').touched">
+        {{'product.title' | translate}}</label>
+      <mat-form-field appearance="outline" class="form-field full-width"
+                      [class.field-error]="productForm.get('title').invalid && productForm.get('title').touched">
+        <input matInput type="text" class="form-control"
+               [placeholder]="'product.titlePlaceholder' | translate"
+               formControlName="title" id="title"/>
+        <mat-error *ngIf="productForm.get('title').hasError('required')" class="input-error">
+          {{'formError.email.required' | translate}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="input-holder">
+      <label for="price" [class.label-error]="productForm.get('price').invalid && productForm.get('price').touched">
+        {{'product.price' | translate}}</label>
+      <mat-form-field appearance="outline" class="form-field full-width"
+                      [class.field-error]="productForm.get('price').invalid && productForm.get('price').touched">
+        <input matInput type="text" class="form-control"
+               [placeholder]="'product.pricePlaceholder' | translate"
+               formControlName="price" id="price"/>
+        <mat-error *ngIf="productForm.get('price').hasError('required')" class="input-error">
+          {{'formError.email.required' | translate}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="input-holder">
+      <span>{{'product.description' | translate}}</span>
+      <editor
+        apiKey="qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc"
+        [formControl]="productForm.controls.description"
+        class="mat-elevation-z1"
+        [init]="{
+            icons: 'material',
+            skin: 'borderless',
+            plugins: 'wordcount',
+            menubar: false,
+            min_height: 150
+          }"
+      ></editor>
+    </div>
+    <div class="input-holder">
+      <span>{{'product.sizeAndFashion' | translate}}</span>
+      <editor
+        apiKey="qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc"
+        [formControl]="productForm.controls.sizeAndFashion"
+        class="mat-elevation-z1"
+        [init]="{
+            icons: 'material',
+            skin: 'borderless',
+            plugins: 'wordcount',
+            menubar: false,
+            min_height: 150
+          }"
+      ></editor>
+    </div>
+    <div class="input-holder">
+      <mat-form-field>
+        <mat-label>{{'product.color' | translate}}</mat-label>
+        <mat-select id="reason" formControlName="color">
+          <mat-option *ngFor="let color of colors" [value]="color.id">
+            {{color.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="input-holder">
+      <mat-form-field>
+        <mat-label>{{'product.size' | translate}}</mat-label>
+        <mat-select id="size" formControlName="size">
+          <mat-option *ngFor="let size of sizes" [value]="size.id">
+            {{size.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="input-holder">
+      <mat-form-field>
+        <mat-label>{{'product.category' | translate}}</mat-label>
+        <mat-select id="category" formControlName="category">
+          <mat-option *ngFor="let category of categories" [value]="category.id">
+            {{category.name}} | <span *ngIf="category.isMen">Meska</span> <span *ngIf="!category.isMen">Damska</span>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" class="main-button">
+      {{'product.save' | translate}}
+    </button>
+  </form>
+  <div class="thumbnail">
+    <h3>{{'thumbnail.title' | translate}}</h3>
+    <img [src]="product.thumbnail">
+    <button mat-raised-button color="primary" class="main-button">
+      {{'thumbnail.addThumbnail' | translate}}
+    </button>
+  </div>
+  <div class="images">
+    <h3>{{'gallery.title' | translate}}</h3>
+    <div class="img-holder">
+      <img [src]="img"  *ngFor="let img of product.assets">
+    </div>
+    <button mat-raised-button color="primary" class="main-button">
+      {{'gallery.addImg' | translate}}
+    </button>
+  </div>
+<!--  <angular-file-uploader-->
+<!--    [config]="afuConfig">-->
+<!--  </angular-file-uploader>-->
+</div>
+

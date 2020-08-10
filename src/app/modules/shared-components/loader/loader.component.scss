@@ -1,0 +1,13 @@
+$color: #575757;
+.loader{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $color;
+  p{
+    font-weight: 500;
+    font-size: 14px;
+    margin-top: 0;
+  }
+}

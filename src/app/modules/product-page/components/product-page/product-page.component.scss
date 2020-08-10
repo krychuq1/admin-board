@@ -1,0 +1,19 @@
+.product-page{
+  .input-holder{
+    display: flex;
+    flex-direction: column;
+  }
+  img{
+    max-width: 200px;
+  }
+  .img-holder{
+
+  }
+  .thumbnail{
+    display: flex;
+    flex-direction: column;
+    button{
+      width: 139px;
+    }
+  }
+}
