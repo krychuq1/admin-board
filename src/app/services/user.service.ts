@@ -24,6 +24,7 @@ export class UserService {
       return false;
     }
   }
+
   async checkToken(token: string) {
     const header = new HttpHeaders({Authorization: `Bearer ${token}`});
     const httpOptions = {

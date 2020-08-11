@@ -1,5 +1,5 @@
-<div class="product-page">
-  <form (ngSubmit)="!productForm.invalid && onSubmit()" [formGroup]="productForm" novalidate id="lForm">
+<div class="product-page" *ngIf="!loading" >
+  <form (ngSubmit)="!productForm.invalid && onSubmit()" [formGroup]="productForm" novalidate id="productForm">
     <div class="input-holder">
       <label for="name" [class.label-error]="productForm.get('name').invalid && productForm.get('name').touched">
         {{'product.name' | translate}}</label>
@@ -91,38 +91,48 @@
       </mat-form-field>
     </div>
 
-    <div class="input-holder">
-      <mat-form-field>
-        <mat-label>{{'product.category' | translate}}</mat-label>
-        <mat-select id="category" formControlName="category">
-          <mat-option *ngFor="let category of categories" [value]="category.id">
-            {{category.name}} | <span *ngIf="category.isMen">Meska</span> <span *ngIf="!category.isMen">Damska</span>
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+    <div class="categories">
+      <h3>{{'categories.title' | translate}}</h3>
+      <div class="list" *ngIf="product">
+        <div class="row" *ngFor="let cat of product.category; index as i">
+        <span>
+          {{cat.name}} | <span *ngIf="cat.isMen">Meska</span>
+          <span *ngIf="!cat.isMen">Damska</span>
+        </span>
+          <img src="assets/signs/delete.svg" (click)="this.product.category.splice(i, 1)">
+        </div>
+      </div>
+      <button type="button" mat-raised-button color="primary" class="main-button" (click)="addCategory()">
+        {{'categories.addCat' | translate}}
+      </button>
     </div>
-    <button mat-raised-button color="primary" class="main-button">
+
+    <button type="submit" mat-raised-button color="primary" class="main-button" [disabled]="productForm.invalid">
       {{'product.save' | translate}}
     </button>
   </form>
+
+
   <div class="thumbnail">
     <h3>{{'thumbnail.title' | translate}}</h3>
-    <img [src]="product.thumbnail">
-    <button mat-raised-button color="primary" class="main-button">
+    <img [src]="product.thumbnail" *ngIf="product">
+    <button mat-raised-button color="primary" class="main-button" [disabled]="!product.id" (click)="changeThumbnail()">
       {{'thumbnail.addThumbnail' | translate}}
     </button>
   </div>
   <div class="images">
     <h3>{{'gallery.title' | translate}}</h3>
-    <div class="img-holder">
-      <img [src]="img"  *ngFor="let img of product.assets">
+    <div class="img-holder" *ngIf="product">
+      <div *ngFor="let img of product.assets">
+        <img src="assets/signs/delete.svg" (click)="removeImg(img)">
+        <img [src]="img">
+      </div>
+
     </div>
-    <button mat-raised-button color="primary" class="main-button">
+    <button mat-raised-button color="primary" class="main-button" [disabled]="!product.id" (click)="addGalleryImg()">
       {{'gallery.addImg' | translate}}
     </button>
   </div>
-<!--  <angular-file-uploader-->
-<!--    [config]="afuConfig">-->
-<!--  </angular-file-uploader>-->
-</div>
 
+</div>
+<app-loader *ngIf="loading"></app-loader>

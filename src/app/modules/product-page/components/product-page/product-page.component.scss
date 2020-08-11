@@ -1,4 +1,5 @@
 .product-page{
+  padding: 20px;
   .input-holder{
     display: flex;
     flex-direction: column;
@@ -7,13 +8,37 @@
     max-width: 200px;
   }
   .img-holder{
-
+    display: flex;
   }
   .thumbnail{
+    margin-top: 30px;
+    //border: 1px solid red;
     display: flex;
     flex-direction: column;
-    button{
-      width: 139px;
+    h3{
+      margin-bottom: 5px;
     }
+    button{
+      //width: 139px;
+    }
+  }
+  .images{
+    margin-top: 30px;
+    //border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    h3{
+      margin-bottom: 5px;
+    }
+  }
+  .categories{
+    margin-top: 10px;
+    margin-bottom: 40px;
+    h3{
+      margin-bottom: 5px;
+    }
+  }
+  button{
+    width: 250px;
   }
 }

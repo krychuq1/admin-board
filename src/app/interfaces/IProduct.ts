@@ -1,7 +1,7 @@
 import { ICategory } from './ICategory';
 
 export interface IProduct {
-  id: string;
+  id?: string;
   name: string;
   assets: string[];
   price: number;

@@ -67,7 +67,12 @@
     "category": "Kategoria",
     "save": "Zapisz"
   },
+  "categories": {
+    "title": "Kategorie",
+    "addCat": "Dodaj"
+  },
   "products": {
+    "addNew": "Dodaj nowy produkt",
     "filters": "filtruj",
     "sorting": "sortuj",
     "searchTitle": "Twoje wyniki wyszukiwania terminu:",

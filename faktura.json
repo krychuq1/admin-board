@@ -1,0 +1,139 @@
+{
+  "ROOT": {
+    "-xmlns": "http://www.comarch.pl/cdn/optima/offline",
+    "KONTRAHENCI": {
+      "WERSJA": "2.00",
+      "BAZA_ZRD_ID": "HAN",
+      "BAZA_DOC_ID": "KS",
+      "KONTRAHENT": [
+        {
+          "EKSPORT": "krajowy",
+          "FINALNY": "Nie",
+          "PLATNIK_VAT": "Nie",
+          "FORMA_PLATNOSCI": "Przelew",
+          "METODA_KASOWA": "Nie",
+          "METODA_KASOWA_SPR": "Nie",
+          "ADRESY": {
+            "ADRES": { "NAZWA1": "Daniel Olivieira" }
+          },
+          "GRUPY": {
+            "GRUPA": {
+
+            }
+          }
+        }
+      ]
+    },
+    "WALUTY": {
+      "WERSJA": "2.00",
+      "BAZA_ZRD_ID": "HAN",
+      "BAZA_DOC_ID": "KS",
+      "WALUTA": {
+        "SYMBOL": "GBP",
+        "NAZWA": "GBP",
+        "SLOWNIE1": "funt szterling"
+      }
+    },
+    "KURSY_WALUT": {
+      "WERSJA": "2.00",
+      "BAZA_ZRD_ID": "HAN",
+      "BAZA_DOC_ID": "KS",
+      "KURS_WALUTY": {
+        "SYMBOL": "GBPxx",
+        "NAZWA": "PLN do GBP"
+      }
+    },
+    "NOTOWANIA_WALUT": {
+      "WERSJA": "2.00",
+      "BAZA_ZRD_ID": "HAN",
+      "BAZA_DOC_ID": "KS",
+      "NOTOWANIE_WALUTY": {
+        "WALUTA": "GBP",
+        "KURS_WALUTY": "GBPxx",
+        "DATA": "2020-08-07",
+        "NOTOWANIE_WALUTY_ILE": "4.8878",
+        "NOTOWANIE_WALUTY_ZA_ILE": "1"
+      }
+    },
+    "REJESTRY_SPRZEDAZY_VAT": {
+      "WERSJA": "2.00",
+      "BAZA_ZRD_ID": "HAN",
+      "BAZA_DOC_ID": "KS",
+      "REJESTR_SPRZEDAZY_VAT": [
+        {
+          "ID_ZRODLA": "1111111111FS/1/2020",
+          "TYP": "Faktura sprzedaży",
+          "REJESTR": "RSV",
+          "DATA_WYSTAWIENIA": "2020-08-11",
+          "DATA_SPRZEDAZY": "2020-08-11",
+          "DATA_WPLYWU": "2020-08-11",
+          "TERMIN": "2020-08-11",
+          "NUMER": "FS/1/2020",
+          "KOREKTA": "Nie",
+          "METODA_KASOWA": "Nie",
+          "FISKALNA": "Nie",
+          "WEWNETRZNA": "Nie",
+          "EKSPORT": "Nie",
+          "PODATNIK_CZYNNY": "Tak",
+          "FINALNY": "Nie",
+          "IDENTYFIKATOR_KSIEGOWY": "FS/1/2020",
+          "OPIS": "Zarządzanie w biznesie",
+          "KATEGORIA": "SPRZEDAŻ TOWARÓW",
+          "FORMA_PLATNOSCI": "Przelew",
+          "DEKLARACJA_VATUE": "NIE",
+          "KURS_WALUTY": "Nie",
+          "NOTOWANIE_WALUTY_ILE": "1",
+          "NOTOWANIE_WALUTY_ZA_ILE": "1",
+          "DATA_KURSU": "2020-07-01",
+          "KURS_DO_KSIEGOWANIA": "Nie",
+          "KURS_WALUTY_2": "Nie",
+          "NOTOWANIE_WALUTY_ILE_2": "1",
+          "NOTOWANIE_WALUTY_ZA_ILE_2": "1",
+          "DATA_KURSU2": "2020-07-01",
+          "PLATNOSC_VAT_W_PLN": "Nie",
+          "DEKLARACJA_VAT27": "Nie",
+          "JPK_FA": "Tak",
+          "TYP_PODMIOTU": "kontrahent",
+          "NAZWA1": "Daniel Olivieira",
+          "POZYCJE": {
+            "POZYCJA": {
+              "KATEGORIA_POS": "SPRZEDAŻ TOWARÓW",
+              "STAWKA_VAT": "5",
+              "STATUS_VAT": "opodatkowana",
+              "NETTO": "100.00",
+              "VAT": "5.00",
+              "NETTO_SYS": "100.00",
+              "VAT_SYS": "5.00",
+              "NETTO_SYS2": "100.00",
+              "VAT_SYS2": "5.00",
+              "RODZAJ_SPRZEDAZY": "Towary",
+              "UWZ_W_PROPORCJI": "Tak",
+              "ODLICZENIA_VAT": "Tak"
+            }
+          },
+          "PLATNOSCI": {
+            "PLATNOSC": {
+              "TERMIN_PLAT": "2020-07-01",
+              "FORMA_PLATNOSCI_PLAT": "Gotówka",
+              "KURS_WALUTY_PLAT": "Nie",
+              "NOTOWANIE_WALUTY_ILE_PLAT": "1",
+              "NOTOWANIE_WALUTY_ZA_ILE_PLAT": "1",
+              "KWOTA_PLN_PLAT": "105.00",
+              "KWOTA_PLAT": "105.00",
+              "KIERUNEK": "przychód",
+              "PODLEGA_ROZLICZENIU": "tak",
+              "NIE_NALICZAJ_ODSETEK": "Nie",
+              "PRZELEW_SEPA": "Nie",
+              "DATA_KURSU_PLAT": "2020-07-01"
+            }
+          }
+        }
+      ]
+    },
+    "REJESTRY_ZAKUPU_VAT": {
+      "WERSJA": "2.00",
+      "BAZA_ZRD_ID": "HAN",
+      "BAZA_DOC_ID": "KS"
+    }
+  }
+}

@@ -15,6 +15,10 @@ import { ProductsComponent } from './components/products/products.component';
 import {SharedModule} from './modules/shared/shared.module';
 import { ProductComponent } from './components/products/product/product.component';
 import { HeaderComponent } from './components/header/header.component';
+import { UploadImgGalleryComponent } from './dialog/upload-img-gallery/upload-img-gallery.component';
+import {MatButtonModule} from '@angular/material/button';
+import { CategoriesComponent } from './dialog/categories/categories.component';
+import { UploadImgThumbnailComponent } from './dialog/upload-img-thumbnail/upload-img-thumbnail.component';
 
 export class CustomTranslateLoader implements TranslateLoader {
   getTranslation(lang: string): Observable<any> {
@@ -28,12 +32,14 @@ export class CustomTranslateLoader implements TranslateLoader {
     SideNavComponent,
     ProductsComponent,
     ProductComponent,
-    HeaderComponent
+    HeaderComponent,
+
   ],
   imports: [
     BrowserModule,
     ToastrModule.forRoot(), // ToastrModule added
     AppRoutingModule,
+    MatButtonModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

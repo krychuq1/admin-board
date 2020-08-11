@@ -20,6 +20,13 @@ export class ProductsService {
       console.log(e);
     }
   }
+  async removeFile(url: string, id: string) {
+    const header = new HttpHeaders({Authorization: `Bearer ${this.cookieService.get('admin_token')}`});
+    const httpOptions = {
+      headers: header
+    };
+    return await this.http.post(this.url + '/file-remove', {url, id}, httpOptions  ).toPromise();
+  }
   async getProductById(id: string) {
     return  await this.http.get(this.url + '/' + id).toPromise() as IProduct;
   }
@@ -29,5 +36,12 @@ export class ProductsService {
       headers: header
     };
     return await this.http.put(this.url + '/' + product.id, product, httpOptions).toPromise();
+  }
+  async addProduct(product: IProduct) {
+    const header = new HttpHeaders({Authorization: `Bearer ${this.cookieService.get('admin_token')}`});
+    const httpOptions = {
+      headers: header
+    };
+    return await this.http.post(this.url, product, httpOptions).toPromise() as IProduct;
   }
 }

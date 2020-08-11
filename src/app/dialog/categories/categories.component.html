@@ -1,0 +1,17 @@
+<div>
+  <form (ngSubmit)="!categoryForm.invalid && onSubmit()" [formGroup]="categoryForm" novalidate>
+          <mat-form-field>
+            <mat-label>{{'product.category' | translate}}</mat-label>
+            <mat-select id="category" formControlName="category">
+              <mat-option *ngFor="let category of data" [value]="category.id">
+                {{category.name}} | <span *ngIf="category.isMen">Meska</span> <span *ngIf="!category.isMen">Damska</span>
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    <button mat-raised-button color="primary" class="main-button">
+      {{'product.save' | translate}}
+    </button>
+  </form>
+
+
+</div>

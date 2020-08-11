@@ -1,5 +1,10 @@
 <div class="products" *ngIf="productsPagination">
   <h3>Zarzędznie produktami</h3>
+  <button mat-raised-button color="primary"
+          [routerLink]="'/product'"
+          class="main-button">
+    {{'products.addNew' | translate}}
+  </button>
   <div class="product-holder" *ngIf="productsPagination">
     <div *ngFor="let product of productsPagination.products; index as i" class="product" [routerLink]="'/product/' + product.id">
       <div class="product-inner"
