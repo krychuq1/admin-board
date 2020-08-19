@@ -1,0 +1,22 @@
+.search-bar{
+  width: 100%;
+  margin-bottom: 30px;
+  margin-left: 25px;
+  .header{
+    position: relative;
+    img{
+      position: absolute;
+      bottom: 20px;
+      left: -18px;
+    }
+  }
+  .full-width{
+    width: 100%;
+  }
+}
+::ng-deep .search-bar {
+  .mat-form-field-label {
+    left: 33px;
+    font-size: 14px;
+  }
+}

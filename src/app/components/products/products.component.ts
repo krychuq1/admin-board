@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {IProductsPagination} from '../../interfaces/IProductsPagination';
 import {ProductsService} from '../../services/products.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ICategory} from '../../interfaces/ICategory';
+import {CategoriesService} from '../../services/categories.service';
 
 @Component({
   selector: 'app-products',
@@ -10,14 +13,29 @@ import {ProductsService} from '../../services/products.service';
 export class ProductsComponent implements OnInit {
   productsPagination: IProductsPagination;
   page = 1;
-  itemsOnPage = 8;
+  itemsOnPage = 30;
   numberOfPages;
   loading = false;
-  constructor(private productsService: ProductsService) { }
+  filters = new Map();
+  parentCategory: ICategory;
+
+  constructor(private productsService: ProductsService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router,
+              private categoryService: CategoriesService
+              ) { }
 
   async ngOnInit() {
     this.loading = true;
-    this.productsPagination = await this.productsService.getProductsPagination(this.itemsOnPage, this.page);
+    console.log('params', this.activatedRoute.snapshot.params);
+    if (this.activatedRoute.snapshot.params.categoryId) {
+      await this.getParentAndChildCategory(this.activatedRoute.snapshot.params.categoryId);
+    }
+    if (this.activatedRoute.snapshot.params.query) {
+      this.filters.set('searchFilter', this.activatedRoute.snapshot.params.query);
+    }
+    this.productsPagination = await this.productsService.getProductByFilters(this.filters, this.itemsOnPage, this.page);
+
     this.setNumberOfPages();
     this.loading = false;  }
   async nextPage() {
@@ -39,5 +57,19 @@ export class ProductsComponent implements OnInit {
   private setNumberOfPages() {
     console.log(this.productsPagination);
     this.numberOfPages = Math.ceil(this.productsPagination.count / this.itemsOnPage);
+  }
+  private async getParentAndChildCategory(categoryId: string) {
+    const catId = Number(categoryId);
+    if (!isNaN(catId)) {
+      this.parentCategory = await this.categoryService.getCategoryById(catId);
+      this.setParentCategoryFilter();
+    }
+
+  }
+  private setParentCategoryFilter() {
+    // set parent category filter with children
+    const arr = [];
+    arr.push(this.parentCategory.id);
+    this.filters.set('parentCategory', arr);
   }
 }

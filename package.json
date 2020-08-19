@@ -24,6 +24,7 @@
     "@ngx-translate/core": "^13.0.0",
     "@tinymce/tinymce-angular": "^4.1.0",
     "angular-file-uploader": "^7.0.1",
+    "lorem-ipsum": "^2.0.3",
     "ngx-cookie-service": "^10.0.1",
     "ngx-toastr": "^13.0.0",
     "rxjs": "~6.6.2",

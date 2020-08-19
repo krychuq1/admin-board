@@ -8,6 +8,9 @@ import {TranslateModule} from '@ngx-translate/core';
 
 const routes: Routes = [
   {path: '', component: DashBoardComponent, canActivate: [AuthGuard]},
+  {path: 'orders', loadChildren: () => import('./modules/orders/orders.module').then(m => m.OrdersModule)},
+  {path: 'category/:categoryId', component: DashBoardComponent, canActivate: [AuthGuard]},
+  {path: 'search/:query', component: DashBoardComponent, canActivate: [AuthGuard]},
   {path: 'auth/login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule)},
   {path: 'product', loadChildren: () => import('./modules/product-page/product-page.module').then(m => m.ProductPageModule)},
 ];

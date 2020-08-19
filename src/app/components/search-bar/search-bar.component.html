@@ -1,0 +1,30 @@
+<div class="search-bar">
+  <div class="inner">
+    <div class="header">
+      <div class="icon-holder arrow" >
+        <img src="assets/header/lupa.svg" alt="search">
+      </div>
+      <mat-form-field class="full-width search-bar-desktop">
+        <input matInput class="search-input" [placeholder]="'searchBar.placeholder' | translate"
+               #search
+               autocomplete="off">
+      </mat-form-field>
+      <div class="icon-holder cancel" *ngIf="isFocus" (click)="clear()">
+        <img src="assets/signs/cancel.svg" alt="search">
+      </div>
+    </div>
+    <div class="search-body">
+      <div *ngFor="let c of categories" class="row">
+        <div [innerHTML]="boldString(c.name)"
+             (click)="onBlur()"
+             [routerLink]="'/category/' + c.id"></div>
+      </div>
+      <div *ngFor="let p of products" class="row">
+        <div [innerHTML]="boldString(p.title)"
+             (click)="onBlur()"
+             [routerLink]="'/search/' + p.title"></div>
+      </div>
+    </div>
+
+  </div>
+</div>

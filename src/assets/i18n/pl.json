@@ -82,6 +82,16 @@
     "page": "Strona",
     "of": "z"
   },
+  "orderThumbnail": {
+    "orderNr": "Numer zamówienia",
+    "email": "email",
+    "status": "stan zamówienia",
+    "completed": "do wysłania",
+    "ship": "wysłane"
+  },
+  "searchBar": {
+    "placeholder": "Wyszukaj..."
+  },
   "gallery": {
     "title": "Galeria",
     "addImg": "Dodaj zdjęcie"

@@ -1,0 +1,5 @@
+<div class="orders">
+  <app-loader *ngIf="loading"></app-loader>
+  <app-order-thumbnail *ngFor="let o of orders" [order]="o"></app-order-thumbnail>
+</div>
+

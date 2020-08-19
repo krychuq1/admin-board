@@ -19,6 +19,8 @@ import { UploadImgGalleryComponent } from './dialog/upload-img-gallery/upload-im
 import {MatButtonModule} from '@angular/material/button';
 import { CategoriesComponent } from './dialog/categories/categories.component';
 import { UploadImgThumbnailComponent } from './dialog/upload-img-thumbnail/upload-img-thumbnail.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import {MatInputModule} from '@angular/material/input';
 
 export class CustomTranslateLoader implements TranslateLoader {
   getTranslation(lang: string): Observable<any> {
@@ -33,6 +35,7 @@ export class CustomTranslateLoader implements TranslateLoader {
     ProductsComponent,
     ProductComponent,
     HeaderComponent,
+    SearchBarComponent,
 
   ],
   imports: [
@@ -49,7 +52,8 @@ export class CustomTranslateLoader implements TranslateLoader {
       },
     }),
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    MatInputModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

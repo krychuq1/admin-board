@@ -16,7 +16,7 @@ export class UploadImgGalleryComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.afuConfig = {
-      multiple: false,
+      multiple: true,
       maxSize: 1,
       formatsAllowed: '.jpg,.png',
       uploadAPI: {

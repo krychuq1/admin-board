@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  baUrl: 'https://api.daisyday.pl/'
+
 };

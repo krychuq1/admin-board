@@ -13,6 +13,8 @@ import {MatDialog} from '@angular/material/dialog';
 import {UploadImgGalleryComponent} from '../../../../dialog/upload-img-gallery/upload-img-gallery.component';
 import {CategoriesComponent} from '../../../../dialog/categories/categories.component';
 import {UploadImgThumbnailComponent} from '../../../../dialog/upload-img-thumbnail/upload-img-thumbnail.component';
+import {LoremIpsum} from 'lorem-ipsum';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-page',
@@ -30,6 +32,7 @@ export class ProductPageComponent implements OnInit {
   constructor(private productService: ProductsService,
               private colorService: ColorsService,
               public dialog: MatDialog,
+              private toastr: ToastrService,
               private sizeService: SizeService,
               private categoryService: CategoriesService,
               private activatedRoute: ActivatedRoute) {
@@ -50,38 +53,46 @@ export class ProductPageComponent implements OnInit {
     this.categories = await this.categoryService.getCategories();
     if (this.activatedRoute.snapshot.paramMap.get('id')) {
       this.product = await this.productService.getProductById(this.activatedRoute.snapshot.paramMap.get('id'));
-      this.productForm.setValue({
-        name: this.product.name,
-        title: this.product.title,
-        price: this.product.price,
-        description: this.product.description,
-        sizeAndFashion: this.product.sizeAndFashion,
-        color: this.product.color.id,
-        size: this.product.size.id,
-      });
     } else {
+      const lorem = new LoremIpsum({
+        wordsPerSentence: {
+          max: 9,
+          min: 4,
+        },
+      });
       this.product = {
         amount: 0,
         assets: [],
-        category: [],
-        color: undefined,
-        description: '',
-        name: '',
-        price: 0,
-        size: undefined,
-        sizeAndFashion: '',
+        category: [this.categories.find(x => x.id === 5)],
+        color: this.colors.find(x => x.id === 1),
+        description: lorem.generateParagraphs(3),
+        name: lorem.generateWords(2),
+        price: this._randomPrice(60, 300),
+        size: this.sizes.find(x => x.id === 1),
+        sizeAndFashion: lorem.generateParagraphs(3),
         sold: false,
         thumbnail: '',
-        title: '',
+        title: lorem.generateWords(4),
         vat: 0
       };
     }
+    this.productForm.setValue({
+      name: this.product.name ? this.product.name : '',
+      title: this.product.title ? this.product.title : '',
+      price: this.product.price ? this.product.price : '',
+      description: this.product.description ? this.product.description : '',
+      sizeAndFashion: this.product.sizeAndFashion ? this.product.sizeAndFashion : '',
+      color: this.product.color ? this.product.color.id : '',
+      size: this.product.size ? this.product.size.id : '',
+    });
     this.loading = false;
     console.log(this.product);
   }
+  _randomPrice(min: number, max: number) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
   async onSubmit() {
     this.loading = true;
-    console.log('here');
     const values = this.productForm.getRawValue();
     this.product.price = parseFloat(values.price);
     this.product.name = values.name;
@@ -92,13 +103,18 @@ export class ProductPageComponent implements OnInit {
     this.product.sizeAndFashion = values.sizeAndFashion;
     this.product.color = this.colors.find(x => x.id === values.color);
     if (this.product.id) {
-      this.productService.updateProduct(this.product);
+      try{
+        await this.productService.updateProduct(this.product);
+        this.toastr.success('Product updated');
+        this.loading = false;
+      } catch (e) {
+        this.toastr.success('Coś nie pykło mordo -1');
+        this.loading = false;
+      }
     } else {
 
       this.product = await this.productService.addProduct(this.product);
       this.loading = false;
-
-
       // console.log('going to add product');
     }
 
@@ -118,6 +134,7 @@ export class ProductPageComponent implements OnInit {
   async removeImg(img) {
     this.loading = true;
     await this.productService.removeFile(img, this.product.id);
+    this.product = await this.productService.getProductById(this.product.id);
     this.loading = false;
 
   }

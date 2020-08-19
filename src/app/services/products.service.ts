@@ -20,6 +20,12 @@ export class ProductsService {
       console.log(e);
     }
   }
+  async getProductByFilters(filtersMap: any, numberOfProducts: number, page: number) {
+    console.log('getting products by filters ', this.sorting);
+    const url = this.url + '/filters/' + numberOfProducts + '/' + page + '/' + this.sorting;
+    return await this.http.post(url, this.convertMap(filtersMap)).toPromise() as IProductsPagination;
+  }
+
   async removeFile(url: string, id: string) {
     const header = new HttpHeaders({Authorization: `Bearer ${this.cookieService.get('admin_token')}`});
     const httpOptions = {
@@ -43,5 +49,20 @@ export class ProductsService {
       headers: header
     };
     return await this.http.post(this.url, product, httpOptions).toPromise() as IProduct;
+  }
+  private convertMap(filtersMap) {
+    const filters = {};
+    filtersMap.forEach((val, key) => {
+      if (val instanceof Map) {
+        const arrayOfItems = [];
+        val.forEach((v, k) => {
+          arrayOfItems.push(v.id ? v.id : v);
+        });
+        filters[key] = arrayOfItems;
+      } else {
+        filters[key] = val;
+      }
+    });
+    return filters;
   }
 }

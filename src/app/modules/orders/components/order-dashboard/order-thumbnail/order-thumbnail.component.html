@@ -1,0 +1,13 @@
+<div class="order-thumbnail" *ngIf="!loading">
+  <p><b>{{'orderThumbnail.orderNr' | translate}}: </b> {{order.id.slice(0,7)}}</p>
+  <p><b>{{'orderThumbnail.email' | translate}}: </b> {{getUserEmail()}}</p>
+  <p><b>{{'orderThumbnail.status' | translate}}: </b> {{'orderThumbnail.' + order.status.type | translate}}</p>
+  <button mat-raised-button color="primary" class="main-button"
+          (click)="shipOrder()"
+          *ngIf="order.status.type === 'completed'">
+    {{'orderThumbnail.ship' | translate}}
+  </button>
+
+</div>
+
+<app-loader *ngIf="loading"></app-loader>
