@@ -149,6 +149,20 @@ export class ProductPageComponent implements OnInit {
       console.log('The dialog was closed', result, '<--');
     });
   }
+  addVideo() {
+    const dialogRef = this.dialog.open(UploadImgGalleryComponent, {
+      width: '250px',
+      data: {
+        productId: this.product.id,
+        isVideo: true
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(async result => {
+      this.product = await this.productService.getProductById(this.product.id);
+      console.log('The dialog was closed', result, '<--');
+    });
+  }
   addCategory() {
     const dialogRef = this.dialog.open(CategoriesComponent, {
       width: '250px',

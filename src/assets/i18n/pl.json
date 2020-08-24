@@ -54,6 +54,8 @@
     "loginError": "Email lub hasło jest niepoprawne"
   },
   "product": {
+    "video": "wideo",
+    "addVideo": "dodaj wideo",
     "name": "nazwa",
     "namePlaceholder": "Wpisz nazwe produktu",
     "title": "tytuł",

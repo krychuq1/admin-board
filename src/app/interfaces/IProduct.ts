@@ -12,6 +12,7 @@ export interface IProduct {
   color: IColor;
   vat: number;
   thumbnail: string;
+  video?: string;
   description: string;
   sizeAndFashion: string;
   category: ICategory[];

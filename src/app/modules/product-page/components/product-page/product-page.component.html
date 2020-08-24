@@ -133,6 +133,24 @@
       {{'gallery.addImg' | translate}}
     </button>
   </div>
+  <div class="video">
+    <h3>{{'product.video' | translate}}</h3>
+    <video *ngIf="product.video"
+           width="270" height="480"
+           controls
+           autoplay
+           loop
+    >
+      <source src="{{product.video}}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <button mat-raised-button color="primary" class="main-button" [disabled]="!product.id" (click)="addVideo()">
+      {{'product.addVideo' | translate}}
+    </button>
+<!--    <img [src]="product.thumbnail" *ngIf="product">-->
+  </div>
+
+
 
 </div>
 <app-loader *ngIf="loading"></app-loader>

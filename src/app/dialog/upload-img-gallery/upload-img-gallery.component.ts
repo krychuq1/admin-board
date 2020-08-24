@@ -16,11 +16,11 @@ export class UploadImgGalleryComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.afuConfig = {
-      multiple: true,
-      maxSize: 1,
-      formatsAllowed: '.jpg,.png',
+      multiple: !data.isVideo,
+      maxSize: data.isVideo ? 5 : 1,
+      formatsAllowed: data.isVideo ? '.mp4' : '.jpg,.png',
       uploadAPI: {
-        url: environment.baUrl + 'products/gallery/' + data,
+        url: data.isVideo ? environment.baUrl + 'products/video/' + data.productId : environment.baUrl + 'products/gallery/' + data,
         method: 'POST',
         headers: {
           Authorization : `Bearer ${cookieService.get('admin_token')}`
