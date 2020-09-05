@@ -15,7 +15,7 @@ export class UploadImgThumbnailComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) public data: string) {
     this.afuConfig = {
       multiple: false,
-      maxSize: 1,
+      maxSize: 10,
       formatsAllowed: '.jpg,.png',
       uploadAPI: {
         url: environment.baUrl + 'products/thumbnail/' + data,

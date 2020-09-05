@@ -1,0 +1,17 @@
+<div class="ship-order" *ngIf="!loading">
+  <h5>Wyślij zamówienie {{data.id.slice(0,7)}}</h5>
+<!--  [class.field-error]="loginForm.get('username').invalid && loginForm.get('username').touched"-->
+  <mat-form-field appearance="outline" class="form-field full-width">
+    <input matInput type="text" class="form-control"
+           [placeholder]="'tracking link'"
+           [formControl]="trackingLink" id="trackingLink"/>
+    <mat-error *ngIf="trackingLink.hasError('required')" class="input-error">
+      tracking link jest wymagany
+    </mat-error>
+  </mat-form-field>
+  <button mat-raised-button color="primary" class="main-button" (click)="shipOrder()" [disabled]="trackingLink.invalid">
+    wyslij zamówienie
+  </button>
+
+</div>
+<app-loader *ngIf="loading"></app-loader>

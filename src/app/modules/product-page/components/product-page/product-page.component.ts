@@ -46,7 +46,19 @@ export class ProductPageComponent implements OnInit {
       size: new FormControl('', [Validators.required]),
     });
   }
-
+  resetSizeAndFashion() {
+    this.productForm.patchValue(
+      {      sizeAndFashion: '<p dir="ltd"><span>Szerokość</span><span>:&nbsp;</span></p>' +
+          '<p dir="ltd"><span>Długość od kołnierza</span><span>:&nbsp;</span></p>' +
+          '<p dir="ltd"><span>Krój</span><span>:&nbsp;</span></p>'});
+  }
+  resetDescription() {
+    this.productForm.patchValue(
+      {      description: '<p dir="ltd"><span>Stan</span><span>:&nbsp;</span></p>' +
+          '<p dir="ltd"><span>Wzór</span><span>:&nbsp;</span></p>' +
+          '<p dir="ltd"><span>Materiał</span><span>:&nbsp;</span></p>' +
+          '<p dir="ltd"><span>Opis</span><span>:&nbsp;</span></p>'});
+  }
   async ngOnInit() {
     this.colors = await this.colorService.getColors();
     this.sizes = await this.sizeService.getSizes();
@@ -63,13 +75,18 @@ export class ProductPageComponent implements OnInit {
       this.product = {
         amount: 0,
         assets: [],
-        category: [this.categories.find(x => x.id === 5)],
+        category: [],
         color: this.colors.find(x => x.id === 1),
-        description: lorem.generateParagraphs(3),
+        description: '<p dir="ltd"><span>Stan</span><span>:&nbsp;</span></p>' +
+          '<p dir="ltd"><span>Materiał</span><span>:&nbsp;</span></p>' +
+          '<p dir="ltd"><span>Opis</span><span>:&nbsp;</span></p>',
         name: lorem.generateWords(2),
         price: this._randomPrice(60, 300),
         size: this.sizes.find(x => x.id === 1),
-        sizeAndFashion: lorem.generateParagraphs(3),
+
+        sizeAndFashion: '<p dir="ltd"><span>Szerokość</span><span>:&nbsp;</span></p>' +
+          '<p dir="ltd"><span>Długość</span><span>:&nbsp;</span></p>' +
+          '<p dir="ltd"><span>Krój</span><span>:&nbsp;</span></p>',
         sold: false,
         thumbnail: '',
         title: lorem.generateWords(4),

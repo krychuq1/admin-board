@@ -1,0 +1,24 @@
+.btn-primary{
+  background: white;
+  border: 1px solid black;
+  color: black;
+  font-weight: 500;
+  padding: 5px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-info{
+  display: none;
+}
+.constraints-info{
+  font-size: 0.7rem;
+}
+.btn-success{
+  background: #3e4eb8;
+  color: white;
+  border-radius: 4px;
+  padding: 5px 20px;
+  font-weight: 500;
+  margin-left: calc(100% - 83px);
+}

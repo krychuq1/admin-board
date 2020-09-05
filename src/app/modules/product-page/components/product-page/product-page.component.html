@@ -1,45 +1,75 @@
 <div class="product-page" *ngIf="!loading" >
+  <h5>Opis produktu</h5>
   <form (ngSubmit)="!productForm.invalid && onSubmit()" [formGroup]="productForm" novalidate id="productForm">
-    <div class="input-holder">
-      <label for="name" [class.label-error]="productForm.get('name').invalid && productForm.get('name').touched">
-        {{'product.name' | translate}}</label>
-      <mat-form-field appearance="outline" class="form-field full-width"
-                      [class.field-error]="productForm.get('name').invalid && productForm.get('name').touched">
-        <input matInput type="text" class="form-control"
-               [placeholder]="'product.namePlaceholder' | translate"
-               formControlName="name" id="name"/>
-        <mat-error *ngIf="productForm.get('name').hasError('required')" class="input-error">
-          {{'formError.email.required' | translate}}
-        </mat-error>
-      </mat-form-field>
+    <div class="section-top">
+      <div class="input-holder">
+        <label for="name" [class.label-error]="productForm.get('name').invalid && productForm.get('name').touched">
+          {{'product.name' | translate}}</label>
+        <mat-form-field appearance="outline" class="form-field full-width"
+                        [class.field-error]="productForm.get('name').invalid && productForm.get('name').touched">
+          <input matInput type="text" class="form-control"
+                 [placeholder]="'product.namePlaceholder' | translate"
+                 formControlName="name" id="name"/>
+          <mat-error *ngIf="productForm.get('name').hasError('required')" class="input-error">
+            {{'formError.email.required' | translate}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="input-holder">
+        <label for="title" [class.label-error]="productForm.get('title').invalid && productForm.get('title').touched">
+          {{'product.title' | translate}}</label>
+        <mat-form-field appearance="outline" class="form-field full-width"
+                        [class.field-error]="productForm.get('title').invalid && productForm.get('title').touched">
+          <input matInput type="text" class="form-control"
+                 [placeholder]="'product.titlePlaceholder' | translate"
+                 formControlName="title" id="title"/>
+          <mat-error *ngIf="productForm.get('title').hasError('required')" class="input-error">
+            {{'formError.email.required' | translate}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="input-holder">
+        <label for="price" [class.label-error]="productForm.get('price').invalid && productForm.get('price').touched">
+          {{'product.price' | translate}}</label>
+        <mat-form-field appearance="outline" class="form-field full-width"
+                        [class.field-error]="productForm.get('price').invalid && productForm.get('price').touched">
+          <input matInput type="text" class="form-control"
+                 [placeholder]="'product.pricePlaceholder' | translate"
+                 formControlName="price" id="price"/>
+          <mat-error *ngIf="productForm.get('price').hasError('required')" class="input-error">
+            {{'formError.email.required' | translate}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="input-holder">
+        <mat-form-field>
+          <mat-label>{{'product.color' | translate}}</mat-label>
+          <mat-select id="reason" formControlName="color">
+            <mat-option *ngFor="let color of colors" [value]="color.id">
+              {{color.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="input-holder">
+        <mat-form-field>
+          <mat-label>{{'product.size' | translate}}</mat-label>
+          <mat-select id="size" formControlName="size">
+            <mat-option *ngFor="let size of sizes" [value]="size.id">
+              {{size.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
-    <div class="input-holder">
-      <label for="title" [class.label-error]="productForm.get('title').invalid && productForm.get('title').touched">
-        {{'product.title' | translate}}</label>
-      <mat-form-field appearance="outline" class="form-field full-width"
-                      [class.field-error]="productForm.get('title').invalid && productForm.get('title').touched">
-        <input matInput type="text" class="form-control"
-               [placeholder]="'product.titlePlaceholder' | translate"
-               formControlName="title" id="title"/>
-        <mat-error *ngIf="productForm.get('title').hasError('required')" class="input-error">
-          {{'formError.email.required' | translate}}
-        </mat-error>
-      </mat-form-field>
-    </div>
-    <div class="input-holder">
-      <label for="price" [class.label-error]="productForm.get('price').invalid && productForm.get('price').touched">
-        {{'product.price' | translate}}</label>
-      <mat-form-field appearance="outline" class="form-field full-width"
-                      [class.field-error]="productForm.get('price').invalid && productForm.get('price').touched">
-        <input matInput type="text" class="form-control"
-               [placeholder]="'product.pricePlaceholder' | translate"
-               formControlName="price" id="price"/>
-        <mat-error *ngIf="productForm.get('price').hasError('required')" class="input-error">
-          {{'formError.email.required' | translate}}
-        </mat-error>
-      </mat-form-field>
-    </div>
-    <div class="input-holder">
+
+
+    <div class="input-holder area">
+      <button type="button" mat-raised-button class="main-button" (click)="resetDescription()">
+        reset description
+      </button>
       <span>{{'product.description' | translate}}</span>
       <editor
         apiKey="czxz5y3xgwwx4xcwsku9bfduq52pqw1bczgc6cmnyjbip9ds"
@@ -54,7 +84,10 @@
           }"
       ></editor>
     </div>
-    <div class="input-holder">
+    <div class="input-holder area">
+      <button type="button" mat-raised-button class="main-button" (click)="resetSizeAndFashion()">
+        reset size and fashion
+      </button>
       <span>{{'product.sizeAndFashion' | translate}}</span>
       <editor
         apiKey="czxz5y3xgwwx4xcwsku9bfduq52pqw1bczgc6cmnyjbip9dsb"
@@ -69,30 +102,13 @@
           }"
       ></editor>
     </div>
-    <div class="input-holder">
-      <mat-form-field>
-        <mat-label>{{'product.color' | translate}}</mat-label>
-        <mat-select id="reason" formControlName="color">
-          <mat-option *ngFor="let color of colors" [value]="color.id">
-            {{color.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
 
-    <div class="input-holder">
-      <mat-form-field>
-        <mat-label>{{'product.size' | translate}}</mat-label>
-        <mat-select id="size" formControlName="size">
-          <mat-option *ngFor="let size of sizes" [value]="size.id">
-            {{size.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
 
     <div class="categories">
       <h3>{{'categories.title' | translate}}</h3>
+      <button type="button" mat-raised-button class="main-button" (click)="addCategory()">
+        {{'categories.addCat' | translate}}
+      </button>
       <div class="list" *ngIf="product">
         <div class="row" *ngFor="let cat of product.category; index as i">
         <span>
@@ -102,53 +118,57 @@
           <img src="assets/signs/delete.svg" (click)="this.product.category.splice(i, 1)">
         </div>
       </div>
-      <button type="button" mat-raised-button color="primary" class="main-button" (click)="addCategory()">
-        {{'categories.addCat' | translate}}
-      </button>
     </div>
 
-    <button type="submit" mat-raised-button color="primary" class="main-button" [disabled]="productForm.invalid">
+    <button type="submit" mat-raised-button color="primary" class="main-button submit" [disabled]="productForm.invalid">
       {{'product.save' | translate}}
     </button>
   </form>
+<div class="line">
+</div>
+  <div class="images" *ngIf="product.id">
+    <h5>Thumbnail / galeria / wideo</h5>
 
-
-  <div class="thumbnail">
-    <h3>{{'thumbnail.title' | translate}}</h3>
-    <img [src]="product.thumbnail" *ngIf="product">
-    <button mat-raised-button color="primary" class="main-button" [disabled]="!product.id" (click)="changeThumbnail()">
-      {{'thumbnail.addThumbnail' | translate}}
-    </button>
-  </div>
-  <div class="images">
-    <h3>{{'gallery.title' | translate}}</h3>
-    <div class="img-holder" *ngIf="product">
-      <div *ngFor="let img of product.assets">
-        <img src="assets/signs/delete.svg" (click)="removeImg(img)">
-        <img [src]="img">
-      </div>
-
+    <div class="thumbnail">
+      <h3>{{'thumbnail.title' | translate}}</h3>
+      <img [src]="product.thumbnail" *ngIf="product">
+      <button mat-raised-button color="primary" class="main-button" [disabled]="!product.id" (click)="changeThumbnail()">
+        {{'thumbnail.addThumbnail' | translate}}
+      </button>
     </div>
-    <button mat-raised-button color="primary" class="main-button" [disabled]="!product.id" (click)="addGalleryImg()">
-      {{'gallery.addImg' | translate}}
-    </button>
+    <div class="images">
+      <h3>{{'gallery.title' | translate}}</h3>
+      <div class="img-holder" *ngIf="product">
+        <div *ngFor="let img of product.assets" class="gallery-image">
+          <img [src]="img">
+          <div class="bin-holder" (click)="removeImg(img)">
+            <span>usuń</span>
+            <img src="assets/signs/delete.svg" >
+          </div>
+        </div>
+
+      </div>
+      <button mat-raised-button color="primary" class="main-button" [disabled]="!product.id" (click)="addGalleryImg()">
+        {{'gallery.addImg' | translate}}
+      </button>
+    </div>
+    <div class="video">
+      <h3>{{'product.video' | translate}}</h3>
+      <video *ngIf="product.video"
+             width="270" height="480"
+             controls
+             autoplay
+             loop
+      >
+        <source src="{{product.video}}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <button mat-raised-button color="primary" class="main-button" [disabled]="!product.id" (click)="addVideo()">
+        {{'product.addVideo' | translate}}
+      </button>
+    </div>
   </div>
-  <div class="video">
-    <h3>{{'product.video' | translate}}</h3>
-    <video *ngIf="product.video"
-           width="270" height="480"
-           controls
-           autoplay
-           loop
-    >
-      <source src="{{product.video}}" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <button mat-raised-button color="primary" class="main-button" [disabled]="!product.id" (click)="addVideo()">
-      {{'product.addVideo' | translate}}
-    </button>
-<!--    <img [src]="product.thumbnail" *ngIf="product">-->
-  </div>
+
 
 
 

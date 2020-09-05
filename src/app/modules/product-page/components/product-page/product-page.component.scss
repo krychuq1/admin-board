@@ -1,8 +1,28 @@
 .product-page{
-  padding: 20px;
+  padding: 20px 20px 100px 20px;
+  width: 960px;
+  h5{
+    font-size: 18px;
+    color: #333333;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  .line{
+    margin-top: 108px;
+    width: 100%;
+    height: 1px;
+    background: #d9d9d9;
+  }
+  //border: 1px solid red;
+  .section-top{
+    width: 420px;
+  }
   .input-holder{
     display: flex;
     flex-direction: column;
+    &.area{
+      margin-top: 30px;
+    }
   }
   img{
     max-width: 200px;
@@ -21,8 +41,14 @@
     button{
       //width: 139px;
     }
+
+  }
+  .submit{
+    display: block;
+    float: right;
   }
   .video{
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
   }
@@ -34,12 +60,31 @@
     h3{
       margin-bottom: 5px;
     }
+    .gallery-image{
+      margin-right: 10px;
+    }
+    .bin-holder{
+      cursor: pointer;
+      display: flex;
+      justify-content: flex-end;
+    }
   }
   .categories{
-    margin-top: 10px;
+    //border: 1px solid red;
+    margin-top: 50px;
     margin-bottom: 40px;
     h3{
       margin-bottom: 5px;
+    }
+    .list{
+      margin-top: 26px;
+      .row{
+        //border-bottom: 1px solid black;
+      }
+      img{
+        cursor: pointer;
+        margin-left: 20px;
+      }
     }
   }
   button{

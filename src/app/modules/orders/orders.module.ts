@@ -5,6 +5,7 @@ import {SharedModule} from '../shared/shared.module';
 import {routing} from './orders-routing.module';
 import { OrderThumbnailComponent } from './components/order-dashboard/order-thumbnail/order-thumbnail.component';
 import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -14,6 +15,7 @@ import {MatButtonModule} from '@angular/material/button';
     CommonModule,
     SharedModule,
     MatButtonModule,
+    MatDialogModule,
     routing
   ]
 })

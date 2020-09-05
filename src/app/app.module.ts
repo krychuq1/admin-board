@@ -21,6 +21,8 @@ import { CategoriesComponent } from './dialog/categories/categories.component';
 import { UploadImgThumbnailComponent } from './dialog/upload-img-thumbnail/upload-img-thumbnail.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import {MatInputModule} from '@angular/material/input';
+import { ShipOrderComponent } from './dialog/ship-order/ship-order.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 export class CustomTranslateLoader implements TranslateLoader {
   getTranslation(lang: string): Observable<any> {
@@ -36,25 +38,27 @@ export class CustomTranslateLoader implements TranslateLoader {
     ProductComponent,
     HeaderComponent,
     SearchBarComponent,
+    ShipOrderComponent,
 
   ],
-  imports: [
-    BrowserModule,
-    ToastrModule.forRoot(), // ToastrModule added
-    AppRoutingModule,
-    MatButtonModule,
-    HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useClass: CustomTranslateLoader,
-        deps: [HttpClient],
-      },
-    }),
-    BrowserAnimationsModule,
-    SharedModule,
-    MatInputModule
-  ],
+    imports: [
+        BrowserModule,
+        ToastrModule.forRoot(), // ToastrModule added
+        AppRoutingModule,
+        MatButtonModule,
+        HttpClientModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useClass: CustomTranslateLoader,
+                deps: [HttpClient],
+            },
+        }),
+        BrowserAnimationsModule,
+        SharedModule,
+        MatInputModule,
+        ReactiveFormsModule
+    ],
   providers: [CookieService],
   bootstrap: [AppComponent]
 })

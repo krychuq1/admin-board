@@ -16,6 +16,7 @@ export class OrderDashboardComponent implements OnInit {
 
   async ngOnInit() {
     this.orders = await this.ordersService.getOrders();
+    console.log(this.orders);
     this.loading = false;
   }
 

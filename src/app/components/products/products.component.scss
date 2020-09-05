@@ -1,6 +1,11 @@
 @import "../../../styles/typography";
 .products{
-  padding-top: 20px;
+  padding: 20px;
+  .add-search{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   h3{
     text-align: center;
   }

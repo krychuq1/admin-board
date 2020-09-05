@@ -17,7 +17,7 @@ export class UploadImgGalleryComponent implements OnInit {
   ) {
     this.afuConfig = {
       multiple: !data.isVideo,
-      maxSize: data.isVideo ? 5 : 1,
+      maxSize: data.isVideo ? 5 : 4,
       formatsAllowed: data.isVideo ? '.mp4' : '.jpg,.png',
       uploadAPI: {
         url: data.isVideo ? environment.baUrl + 'products/video/' + data.productId : environment.baUrl + 'products/gallery/' + data,

@@ -34,6 +34,11 @@ export class ProductsComponent implements OnInit {
     if (this.activatedRoute.snapshot.params.query) {
       this.filters.set('searchFilter', this.activatedRoute.snapshot.params.query);
     }
+    if (this.activatedRoute.snapshot.queryParams.page) {
+      this.page = this.activatedRoute.snapshot.queryParams.page;
+    } else {
+      this.page = 1;
+    }
     this.productsPagination = await this.productsService.getProductByFilters(this.filters, this.itemsOnPage, this.page);
 
     this.setNumberOfPages();
@@ -42,16 +47,33 @@ export class ProductsComponent implements OnInit {
     if (this.page < this.numberOfPages) {
       this.page++;
       await this.getProductsOnPage();
+      this.addPageParam();
+      this.scrollToTop();
     }
   }
   async prevPage() {
     if (this.page > 1) {
       this.page--;
       await this.getProductsOnPage();
+      this.addPageParam();
+      this.scrollToTop();
     }
   }
+  private scrollToTop() {
+    document.getElementById('header')
+      .scrollIntoView({behavior: 'smooth'});
+  }
+  addPageParam(){
+    this.router.navigate([], {
+      relativeTo: this.activatedRoute,
+      queryParams: {
+        page: this.page
+      },
+      queryParamsHandling: 'merge',
+    });
+  }
   async getProductsOnPage() {
-    this.productsPagination = await this.productsService.getProductsPagination(this.itemsOnPage, this.page);
+    this.productsPagination = await this.productsService.getProductByFilters(this.filters, this.itemsOnPage, this.page);
     this.setNumberOfPages();
   }
   private setNumberOfPages() {
