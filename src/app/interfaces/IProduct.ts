@@ -5,6 +5,7 @@ export interface IProduct {
   name: string;
   assets: string[];
   price: number;
+  promoPrice?: number;
   title: string;
   amount: number;
   size: ISize;
@@ -12,7 +13,9 @@ export interface IProduct {
   color: IColor;
   vat: number;
   thumbnail: string;
+  isOversize: boolean;
   video?: string;
+  isModel?: boolean;
   description: string;
   sizeAndFashion: string;
   category: ICategory[];

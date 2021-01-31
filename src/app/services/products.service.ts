@@ -25,7 +25,7 @@ export class ProductsService {
   }
   async getProductByFilters(filtersMap: any, numberOfProducts: number, page: number) {
     console.log('getting products by filters ', this.sorting);
-    const url = this.url + '/filters/' + numberOfProducts + '/' + page + '/' + this.sorting;
+    const url = this.url + '/admin/filters/' + numberOfProducts + '/' + page + '/' + this.sorting;
     return await this.http.post(url, this.convertMap(filtersMap)).toPromise() as IProductsPagination;
   }
 

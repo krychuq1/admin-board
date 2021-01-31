@@ -14,25 +14,27 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {CategoriesComponent} from '../../dialog/categories/categories.component';
 import {UploadImgGalleryComponent} from '../../dialog/upload-img-gallery/upload-img-gallery.component';
 import {UploadImgThumbnailComponent} from '../../dialog/upload-img-thumbnail/upload-img-thumbnail.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
 @NgModule({
   declarations: [ProductPageComponent, CategoriesComponent,  UploadImgGalleryComponent,
     UploadImgThumbnailComponent],
-  imports: [
-    CommonModule,
-    AngularFileUploaderModule,
-    MatDialogModule,
-    EditorModule,
-    routing,
-    SharedModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule
+    imports: [
+        CommonModule,
+        AngularFileUploaderModule,
+        MatDialogModule,
+        EditorModule,
+        routing,
+        SharedModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatCheckboxModule
 
-  ]
+    ]
 })
 export class ProductPageModule { }

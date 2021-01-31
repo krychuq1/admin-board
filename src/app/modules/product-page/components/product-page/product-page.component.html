@@ -53,11 +53,25 @@
       </div>
 
       <div class="input-holder">
+        <label for="price">
+          {{'product.promoPrice' | translate}}</label>
+        <mat-form-field appearance="outline" class="form-field full-width"
+                        [class.field-error]="productForm.get('promoPrice').invalid && productForm.get('promoPrice').touched">
+          <input matInput type="text" class="form-control"
+                 [placeholder]="'product.promoPricePlaceholder' | translate"
+                 formControlName="promoPrice" id="promoPrice"/>
+          <mat-error *ngIf="productForm.get('price').hasError('required')" class="input-error">
+            {{'formError.email.required' | translate}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="input-holder">
         <mat-form-field>
           <mat-label>{{'product.color' | translate}}</mat-label>
           <mat-select id="reason" formControlName="color">
             <mat-option *ngFor="let color of colors" [value]="color.id">
-              {{color.name}}
+              {{'colors.' + color.name | translate}}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -72,6 +86,15 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
+      </div>
+      <div class="input-holder">
+        <mat-checkbox formControlName="isSold" class="example-margin">Sprzedany</mat-checkbox>
+      </div>
+      <div class="input-holder">
+        <mat-checkbox formControlName="isModel" class="example-margin">Modelka</mat-checkbox>
+      </div>
+      <div class="input-holder">
+        <mat-checkbox formControlName="isOversize" class="example-margin">Oversize</mat-checkbox>
       </div>
     </div>
 
