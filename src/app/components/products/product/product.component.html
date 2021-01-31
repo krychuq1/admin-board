@@ -10,6 +10,7 @@
     </div>
   </div>
   <h3>{{product.price}} zł</h3>
+  <h3 *ngIf="product.promoPrice">{{product.promoPrice}} zł</h3>
   <p>{{product.title}}</p>
 </div>
 <div class="product" [routerLink]="'/product/' + product.id" *ngIf="!product.sold">
@@ -22,5 +23,7 @@
     <img [src]="product.thumbnail">
   </div>
   <h3>{{product.price}} zł</h3>
+  <h3 *ngIf="product.promoPrice">{{product.promoPrice}} zł</h3>
+
   <p>{{product.title}}</p>
 </div>
