@@ -3,8 +3,9 @@
     <h5>Opis produktu</h5>
 <!--    mat-raised-button  class="main-button submit" [disabled]="productForm.invalid"-->
     <button type="button" mat-raised-button color="primary"
-            *ngIf="document.location.hostname.includes('dev') ||
-            document.location.hostname.includes('local')"
+            (click)="addProductToProd()"
+            *ngIf="(document.location.hostname.includes('dev') ||
+            document.location.hostname.includes('local')) && !isOnProd"
             class="main-button">
       Dodaj na produkcje
     </button>

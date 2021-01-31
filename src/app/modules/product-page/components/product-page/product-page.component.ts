@@ -29,6 +29,7 @@ export class ProductPageComponent implements OnInit {
   public categories: ICategory[];
   public productForm: FormGroup;
   public loading = true;
+  public isOnProd: boolean;
 
   constructor(private productService: ProductsService,
               private colorService: ColorsService,
@@ -54,7 +55,7 @@ export class ProductPageComponent implements OnInit {
     });
   }
   async checkIfProductOnProd() {
-    await this.productService.checkIfProductOnProd(this.activatedRoute.snapshot.paramMap.get('id'));
+    return await this.productService.checkIfProductOnProd(this.activatedRoute.snapshot.paramMap.get('id'));
   }
   resetSizeAndFashion() {
     console.log(this.product.category);
@@ -175,10 +176,19 @@ export class ProductPageComponent implements OnInit {
       isSold: this.product.id ? this.product.sold : false,
       isOversize: this.product.isOversize
     });
+    this.isOnProd = !!await this.checkIfProductOnProd();
     this.loading = false;
   }
   _randomPrice(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  async addProductToProd() {
+    this.loading = true;
+    await this.productService.addProductToProd(this.product);
+    this.product = await this.productService.getProductById(this.product.id);
+    this.isOnProd = !!await this.checkIfProductOnProd();
+    this.toastr.success('Product migrated to production');
+    this.loading = false;
   }
   async onSubmit() {
     // this.loading = true;

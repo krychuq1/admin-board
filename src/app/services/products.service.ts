@@ -14,7 +14,12 @@ export class ProductsService {
   private sorting = 'newest';
   constructor(private http: HttpClient, private cookieService: CookieService) {}
   async checkIfProductOnProd(id: string) {
-    return
+    console.log(id);
+    const header = new HttpHeaders({Authorization: `Bearer ${this.cookieService.get('admin_token')}`});
+    const httpOptions = {
+      headers: header
+    };
+    return await this.http.get(this.url + '/checkIfProductOnProd/' + id, httpOptions).toPromise();
   }
   async getProductsPagination(numberOfProducts: number, page: number) {
     try {
@@ -52,6 +57,14 @@ export class ProductsService {
       headers: header
     };
     return await this.http.post(this.url, product, httpOptions).toPromise() as IProduct;
+  }
+  async addProductToProd(product: IProduct) {
+    console.log(product);
+    const header = new HttpHeaders({Authorization: `Bearer ${this.cookieService.get('admin_token')}`});
+    const httpOptions = {
+      headers: header
+    };
+    return await this.http.post(this.url + '/addProductToProd', product, httpOptions).toPromise() as IProduct;
   }
   private convertMap(filtersMap) {
     const filters = {};

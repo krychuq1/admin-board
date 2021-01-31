@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IProduct} from '../../../interfaces/IProduct';
+import {ProductsService} from "../../../services/products.service";
 
 @Component({
   selector: 'app-product',
@@ -9,10 +10,14 @@ import {IProduct} from '../../../interfaces/IProduct';
 export class ProductComponent implements OnInit {
   @Input() product: IProduct;
   @Input() index: number;
+  public isOnProd: boolean;
 
-  constructor() { }
+  constructor(private productService: ProductsService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.isOnProd = !!await this.checkIfProductOnProd();
   }
-
+  async checkIfProductOnProd() {
+    return await this.productService.checkIfProductOnProd(this.product.id);
+  }
 }
