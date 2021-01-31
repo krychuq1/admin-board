@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {ProductsService} from '../../../../services/products.service';
 import {IProduct} from '../../../../interfaces/IProduct';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {IColor} from '../../../../interfaces/IColor';
 import {ColorsService} from '../../../../services/colors.service';
@@ -15,6 +15,7 @@ import {CategoriesComponent} from '../../../../dialog/categories/categories.comp
 import {UploadImgThumbnailComponent} from '../../../../dialog/upload-img-thumbnail/upload-img-thumbnail.component';
 import {LoremIpsum} from 'lorem-ipsum';
 import {ToastrService} from 'ngx-toastr';
+import {DOCUMENT} from "@angular/common";
 
 @Component({
   selector: 'app-product-page',
@@ -33,9 +34,11 @@ export class ProductPageComponent implements OnInit {
               private colorService: ColorsService,
               public dialog: MatDialog,
               private toastr: ToastrService,
+              public router: Router,
               private sizeService: SizeService,
               private categoryService: CategoriesService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              @Inject(DOCUMENT) public document: any) {
     this.productForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
       title: new FormControl('', [Validators.required]),
@@ -45,6 +48,9 @@ export class ProductPageComponent implements OnInit {
       color: new FormControl('', [Validators.required]),
       size: new FormControl('', [Validators.required]),
     });
+  }
+  async checkIfProductOnProd() {
+    await this.productService.checkIfProductOnProd(this.activatedRoute.snapshot.paramMap.get('id'));
   }
   resetSizeAndFashion() {
     this.productForm.patchValue(

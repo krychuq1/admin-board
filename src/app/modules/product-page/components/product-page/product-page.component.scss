@@ -1,6 +1,11 @@
 .product-page{
   padding: 20px 20px 100px 20px;
   width: 960px;
+  .title-add-prod{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   h5{
     font-size: 18px;
     color: #333333;

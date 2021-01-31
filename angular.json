@@ -128,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "admin-dashboard"
+  "defaultProject": "admin-dashboard",
+  "cli": {
+    "analytics": false
+  }
 }

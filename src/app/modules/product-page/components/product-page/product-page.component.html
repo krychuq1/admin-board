@@ -1,5 +1,15 @@
 <div class="product-page" *ngIf="!loading" >
-  <h5>Opis produktu</h5>
+  <div class="title-add-prod">
+    <h5>Opis produktu</h5>
+<!--    mat-raised-button  class="main-button submit" [disabled]="productForm.invalid"-->
+    <button type="button" mat-raised-button color="primary"
+            *ngIf="document.location.hostname.includes('dev') ||
+            document.location.hostname.includes('local')"
+            class="main-button">
+      Dodaj na produkcje
+    </button>
+  </div>
+
   <form (ngSubmit)="!productForm.invalid && onSubmit()" [formGroup]="productForm" novalidate id="productForm">
     <div class="section-top">
       <div class="input-holder">

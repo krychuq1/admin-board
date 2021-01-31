@@ -13,6 +13,9 @@ export class ProductsService {
   public url = environment.baUrl + 'products';
   private sorting = 'newest';
   constructor(private http: HttpClient, private cookieService: CookieService) {}
+  async checkIfProductOnProd(id: string) {
+    return
+  }
   async getProductsPagination(numberOfProducts: number, page: number) {
     try {
       return await this.http.get(this.url + '/pagination/' + numberOfProducts + '/' + page).toPromise() as IProductsPagination;
