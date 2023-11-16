@@ -1,7 +1,10 @@
 <div class="product" *ngIf="product.sold">
   <div class="image-holder" [class.next]="index > 0">
-    <div class="isOnProd" *ngIf="isOnProd">
-      Produkcja
+    <div class="isOnProd" *ngIf="product.isVisible">
+      Na sklepie
+    </div>
+    <div class="isOnProd" *ngIf="!product.isVisible">
+      Do dodania!
     </div>
     <div class="options">
       <img src="assets/signs/edit.svg">
@@ -18,8 +21,11 @@
 </div>
 <div class="product" [routerLink]="'/product/' + product.id" *ngIf="!product.sold">
   <div class="image-holder" [class.next]="index > 0">
-    <div class="isOnProd" *ngIf="isOnProd">
-      Produkcja
+    <div class="isOnProd" *ngIf="product.isVisible">
+      Na sklepie
+    </div>
+    <div class="isOnProd" *ngIf="!product.isVisible">
+      Do dodania!
     </div>
     <div class="options">
       <img src="assets/signs/edit.svg">

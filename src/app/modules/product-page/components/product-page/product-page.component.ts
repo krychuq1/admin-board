@@ -51,7 +51,8 @@ export class ProductPageComponent implements OnInit {
       size: new FormControl('', [Validators.required]),
       isModel: new FormControl('', []),
       isSold: new FormControl('', []),
-      isOversize: new FormControl('', [])
+      isOversize: new FormControl('', []),
+      isVisible: new FormControl('', [])
     });
   }
   async checkIfProductOnProd() {
@@ -174,6 +175,7 @@ export class ProductPageComponent implements OnInit {
       size: this.product.size ? this.product.size.id : '',
       isModel: this.product.id ? this.product.isModel : true,
       isSold: this.product.id ? this.product.sold : false,
+      isVisible: this.product.id ? this.product.isVisible : false,
       isOversize: this.product.isOversize
     });
     this.isOnProd = !!await this.checkIfProductOnProd();
@@ -202,6 +204,7 @@ export class ProductPageComponent implements OnInit {
     this.product.size = this.sizes.find(x => x.id === values.size);
     this.product.isModel = values.isModel;
     this.product.sold = values.isSold;
+    this.product.isVisible = values.isVisible;
     this.product.sizeAndFashion = values.sizeAndFashion;
     this.product.isOversize = values.isOversize;
     this.product.color = this.colors.find(x => x.id === values.color);

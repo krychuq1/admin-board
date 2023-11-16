@@ -15,7 +15,7 @@
     </div>
     <div class="search-body">
       <div *ngFor="let c of categories" class="row">
-        <div [innerHTML]="boldString(c.name)"
+        <div [innerHTML]="boldString(c.namePl)"
              (click)="onBlur()"
              [routerLink]="'/category/' + c.id"></div>
       </div>

@@ -5,9 +5,8 @@
 export const environment = {
   production: false,
   baUrl: 'http://localhost:3000/'
+  // baUrl: 'https://server.wornoutgems.com/'
 };
-// baUrl: 'https://api-dev.daisyday.pl:4000/'
-// baUrl: 'http://192.168.0.101:3000/'
 
 /*
  * For easier debugging in development mode, you can import the following file

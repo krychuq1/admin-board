@@ -38,6 +38,7 @@ export class SearchBarComponent implements OnInit, AfterViewInit{
   async searchFun(text: string) {
     this.products =  await this.searchService.searchForProduct(text, '5');
     this.categories = await this.searchService.searchForCategory(text);
+    console.log(this.categories);
   }
 
   ngOnInit(): void {

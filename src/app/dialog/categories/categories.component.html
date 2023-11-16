@@ -4,7 +4,7 @@
             <mat-label>{{'product.category' | translate}}</mat-label>
             <mat-select id="category" formControlName="category">
               <mat-option *ngFor="let category of data" [value]="category.id">
-                {{category.name}} | <span *ngIf="category.isMen">Meska</span> <span *ngIf="!category.isMen">Damska</span>
+                {{category.namePl}} | <span *ngIf="category.isMen">Meska</span> <span *ngIf="!category.isMen">Damska</span>
               </mat-option>
             </mat-select>
           </mat-form-field>

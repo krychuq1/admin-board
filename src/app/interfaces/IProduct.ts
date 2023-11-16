@@ -15,6 +15,7 @@ export interface IProduct {
   thumbnail: string;
   isOversize: boolean;
   video?: string;
+  isVisible?: boolean;
   isModel?: boolean;
   description: string;
   sizeAndFashion: string;

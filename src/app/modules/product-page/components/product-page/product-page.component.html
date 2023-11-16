@@ -97,6 +97,9 @@
       <div class="input-holder">
         <mat-checkbox formControlName="isOversize" class="example-margin">Oversize</mat-checkbox>
       </div>
+      <div class="input-holder">
+        <mat-checkbox formControlName="isVisible" class="example-margin">Na stronie www</mat-checkbox>
+      </div>
     </div>
 
 
@@ -146,7 +149,7 @@
       <div class="list" *ngIf="product">
         <div class="row" *ngFor="let cat of product.category; index as i">
         <span>
-          {{cat.name}} | <span *ngIf="cat.isMen">Meska</span>
+          {{cat.namePl}} | <span *ngIf="cat.isMen">Meska</span>
           <span *ngIf="!cat.isMen">Damska</span>
         </span>
           <img src="assets/signs/delete.svg" (click)="this.product.category.splice(i, 1)">
@@ -186,21 +189,21 @@
         {{'gallery.addImg' | translate}}
       </button>
     </div>
-    <div class="video">
-      <h3>{{'product.video' | translate}}</h3>
-      <video *ngIf="product.video"
-             width="270" height="480"
-             controls
-             autoplay
-             loop
-      >
-        <source src="{{product.video}}" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <button mat-raised-button color="primary" class="main-button" [disabled]="!product.id" (click)="addVideo()">
-        {{'product.addVideo' | translate}}
-      </button>
-    </div>
+<!--    <div class="video">-->
+<!--      <h3>{{'product.video' | translate}}</h3>-->
+<!--      <video *ngIf="product.video"-->
+<!--             width="270" height="480"-->
+<!--             controls-->
+<!--             autoplay-->
+<!--             loop-->
+<!--      >-->
+<!--        <source src="{{product.video}}" type="video/mp4">-->
+<!--        Your browser does not support the video tag.-->
+<!--      </video>-->
+<!--      <button mat-raised-button color="primary" class="main-button" [disabled]="!product.id" (click)="addVideo()">-->
+<!--        {{'product.addVideo' | translate}}-->
+<!--      </button>-->
+<!--    </div>-->
   </div>
 
 
